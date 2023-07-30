@@ -1,0 +1,167 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+
+@if (TempData["ErrorMessage"] != null)
+{
+    <div class="alert alert-danger">
+        @TempData["ErrorMessage"]
+    </div>
+}
+
+
+<form method="post" action="/Home/AddPC">
+
+    <div class="table-container" style="margin-top: 70px;">
+
+
+
+    <table>
+
+            <tr>
+                <td><p>Имя ПК</p></td>
+                <td> <input type="text" value="" name="PCName" /> </td>
+            </tr>
+
+
+            <tr>
+                <td><p>Дата выдачи</p></td>
+                <td><input type="text" value="" name="dateOfIssue" /> </td>
+            </tr>
+
+
+            <tr>
+                <td><p>Пользователь</p></td>
+                <td><input type="text" value="" name="userName" /> </td>
+            </tr>
+
+
+            <tr>
+                <td><p>Отдел(сокр.)</p></td>
+                <td><input type="text" value="" name="departmentName" /> </td>
+            </tr>
+
+
+            <tr>
+                <td><p>Марка</p></td>
+                <td><input type="text" value="" name="pcMark" /> </td>
+            </tr>
+
+            <tr>
+                <td><p>SN системного блока</p></td>
+                <td><input type="text" value="" name="snSystemOfBlock" /> </td>
+            </tr>
+
+            <tr>
+                <td>
+                    <p>Характеристика
+                        <br />
+                        <span class="hint">
+                            Процессор/Мат.плата/ОЗУ/Видеокарта/HDD/SSD/БП
+
+                        </span>
+                    </p>
+                    
+                </td>
+                
+                <td><input type="text" value="" name="characteristic" /> </td>
+            </tr>
+
+
+            <tr>
+                <td><p>Поставщик</p></td>
+                <td><input type="text" value="" name="providerName" /> </td>
+            </tr>
+
+            <tr>
+                <td><p>Категория</p></td>
+                <td><input type="text" value="" name="category" /> </td>
+            </tr>
+
+            <tr>
+                <td><p>Операционная система</p></td>
+                <td><input type="text" value="" name="OS" /> </td>
+            </tr>
+
+            <tr>
+                <td><p>Инвентарный номер</p></td>
+                <td><input type="text" value="" name="inventoryNumber" /> </td>
+            </tr>
+
+            <tr>
+                <td><p>Скл №ПК</p></td>
+                <td><input type="text" value="" name="skladNumberPC" /> </td>
+            </tr>
+
+            <tr>
+                <td><p>Монитор</p></td>
+                <td><input type="text" value="" name="monitorName" /> </td>
+            </tr>
+
+            <tr>
+                <td><p>SN монитора
+                        <br />
+                        <span class="hint">
+                            SN монитора 1 / SN монитора 2
+                        </span>
+                </p>
+
+
+
+                </td>
+                <td><input type="text" value="" name="snMonitor" /> </td>
+            </tr>
+
+
+            <tr>
+                <td>
+                    <p>Переферийные устройства
+
+                        <span class="hint">
+                            <br />Клавиатура+Мышь/Веб-камера/Наушник/Сетевой фильтр
+
+                        </span>
+                    </p>
+
+                </td>
+                <td><input type="text" value="" name="additionalDevices" /> </td>
+            </tr>
+
+            <tr>
+                <td><p>Кабинет</p></td>
+                <td> <input type="text" value="" name="cabinet" /> </td>
+            </tr>
+
+            <tr>
+                <td><p>МОЛ</p></td>
+                <td> <input type="text" value="" name="MOL" /> </td>
+            </tr>
+
+            <tr>
+                <td><p>Проект</p></td>
+                <td> <input type="text" value="" name="projectName" /> </td>
+            </tr>
+
+
+            <tr>
+                <td><p>Основание</p></td>
+                <td> <input type="text" value="" name="foundation" /> </td>
+            </tr>
+
+
+            <tr>
+                <td><p>Примечание</p></td>
+                <td> <input type="text" value="" name="note" /> </td>
+            </tr>
+
+
+            <tr>
+                <td><input type="submit" value="Отправить" /> </td>
+                <td></td>
+            </tr>
+        
+
+    </table>
+    </div>
+</form>

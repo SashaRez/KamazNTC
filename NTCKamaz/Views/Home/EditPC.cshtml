@@ -1,0 +1,181 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+@model NTCKamaz.Models.Model
+
+@if (TempData["ErrorMessage"] != null)
+{
+    <div class="alert alert-danger">
+        @TempData["ErrorMessage"]
+    </div>
+}
+
+
+<form method="post" action="">
+
+    <div class="table-container" style="margin-top: 100px;">
+
+
+        @foreach (var PC in Model.PCViews!)
+        {
+            <table>
+
+                <tr>
+                    <td><p>Имя ПК</p></td>
+                    <td> <input type="text" value="@PC.pcName" name="PCName" /> </td>
+                </tr>
+
+
+                <tr>
+                    <td><p>Дата выдачи</p></td>
+                    <td><input type="text" value="@PC.dateOfIssue" name="dateOfIssue" /> </td>
+                </tr>
+
+
+                <tr>
+                    <td><p>Пользователь</p></td>
+                    <td><input type="text" value="@PC.userName" name="userName" /> </td>
+                </tr>
+
+
+                <tr>
+                    <td><p>Отдел(сокр.)</p></td>
+                    <td><input type="text" value="@PC.departmentName" name="departmentName" /> </td>
+                </tr>
+
+
+                <tr>
+                    <td><p>Марка</p></td>
+                    <td><input type="text" value="@PC.pcMark" name="pcMark" /> </td>
+                </tr>
+
+                <tr>
+                    <td><p>SN системного блока</p></td>
+                    <td><input type="text" value="@PC.snSystemBlock" name="snSystemOfBlock" /> </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        <p>
+                            Характеристика
+                            <br />
+                            <span class="hint">
+                                Процессор/Мат.плата/ОЗУ/Видеокарта/HDD/SSD/БП
+
+                            </span>
+                        </p>
+
+                    </td>
+
+                    <td><input type="text" value="@PC.characteristic" name="characteristic" /> </td>
+                </tr>
+
+
+                <tr>
+                    <td><p>Поставщик</p></td>
+                    <td><input type="text" value="@PC.providerName" name="providerName" /> </td>
+                </tr>
+
+                <tr>
+                    <td><p>Категория</p></td>
+                    <td><input type="text" value="@PC.category" name="category" /> </td>
+                </tr>
+
+                <tr>
+                    <td><p>Операционная система</p></td>
+                    <td><input type="text" value="@PC.OS" name="OS" /> </td>
+                </tr>
+
+                <tr>
+                    <td><p>Инвентарный номер</p></td>
+                    <td><input type="text" value="@PC.inventoryNumber" name="inventoryNumber" /> </td>
+                </tr>
+
+                <tr>
+                    <td><p>Скл №ПК</p></td>
+                    <td><input type="text" value="@PC.skladNumberPC" name="skladNumberPC" /> </td>
+                </tr>
+
+                <tr>
+                    <td><p>Монитор</p></td>
+                    <td><input type="text" value="@PC.monitorName" name="monitorName" /> </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        <p>
+                            SN монитора
+                            <br />
+                            <span class="hint">
+                                SN монитора 1 / SN монитора 2
+                            </span>
+                        </p>
+
+
+
+                    </td>
+                    <td><input type="text" value="@PC.snMonitor" name="snMonitor" /> </td>
+                </tr>
+
+
+                <tr>
+                    <td>
+                        <p>
+                            Переферийные устройства
+
+                            <span class="hint">
+                                <br />Клавиатура+Мышь/Веб-камера/Наушник/Сетевой фильтр
+
+                            </span>
+                        </p>
+
+                    </td>
+                    <td><input type="text" value="@PC.additionalDevices" name="additionalDevices" /> </td>
+                </tr>
+
+                <tr>
+                    <td><p>Кабинет</p></td>
+                    <td> <input type="text" value="@PC.cabinet" name="cabinet" /> </td>
+                </tr>
+
+                <tr>
+                    <td><p>МОЛ</p></td>
+                    <td> <input type="text" value="@PC.MOL" name="MOL" /> </td>
+                </tr>
+
+                <tr>
+                    <td><p>Проект</p></td>
+                    <td> <input type="text" value="@PC.projectName" name="projectName" /> </td>
+                </tr>
+
+
+                <tr>
+                    <td><p>Основание</p></td>
+                    <td> <input type="text" value="@PC.foundation" name="foundation" /> </td>
+                </tr>
+
+
+                <tr>
+                    <td><p>Примечание</p></td>
+                    <td> <input type="text" value="@PC.note" name="note" /> </td>
+                </tr>
+
+
+                <tr>
+                    <td><input type="submit" value="Отправить" /> </td>
+                    <td></td>
+                </tr>
+
+
+
+
+            </table>
+        }
+
+
+
+
+    </div>
+</form>
+

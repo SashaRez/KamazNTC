@@ -1,0 +1,372 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: white;
+}
+
+
+.tool_bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 80px;
+    z-index: 9997;
+    background: #0072C4;
+}
+
+    .tool_bar b {
+        position: fixed;
+        right: 0;
+        width: 70px;
+        height: 70px;
+        background: #0072C4;
+    }
+
+.LogoMain{
+    left:50%;
+    top:50%;
+    position: absolute;
+    transform: translate(-50%, -50%);
+}
+
+.hint {
+    font-size: 12px;
+    color: gray;
+}
+
+a {
+    text-decoration: none;
+}
+
+
+input {
+    width: 500px;
+}
+
+    input[type="submit"]{
+        width: 100px;
+    }
+
+    .search_box {
+        position: fixed;
+        top: 15px;
+        right: 430px;
+        background: #007EC4;
+        height: 50px;
+        border: 2px solid white;
+        width: 300px;
+        border-radius: 40px;
+        padding: 10px;
+        display: flex;
+        z-index: 9999;
+        align-items: center;
+    }
+
+.search-btn {
+    color: white;
+    width: 40px;
+    height: 40px;
+    border: 1px solid #007EC4;
+    border-radius: 50%;
+    background: #005CC4;
+    display: flex;
+    justify-content: center;
+    margin-left: 5px;
+    align-items: center;
+}
+
+.search-txt {
+    background: none;
+    outline: none;
+    padding: 0;
+    font-size: 16px;
+    line-height: 30px;
+    width: 240px;
+    border: none;
+    margin: 0 auto;
+}
+
+.navega_sunka {
+    position: fixed;
+    width: 370px;
+    left: -370px;
+    height: 100%;
+    top: 0;
+    z-index: 9999;
+    background: #0072C4;
+    transition: all .5s ease;
+}
+
+.search-txt::placeholder {
+    color: white;
+}
+
+
+.navega_sunka header {
+    font-size: 30px;
+    color: white;
+    line-height: 80px;
+    text-align: center;
+    background: #005CC4;
+    user-select: none;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.navega_sunka a {
+    display: block;
+    height: 65px;
+    width: 100%;
+    color: white;
+    line-height: 65px;
+    padding-left: 30px;
+    box-sizing: border-box;
+    border-bottom: 1px solid blue;
+    border-top: 1px solid rgba(255,255,255,.1);
+    border-left: 5px solid transparent;
+    font-family: 'Open Sans', sans-serif;
+    transition: all .5s ease;
+}
+
+a.gesopamda, a:hover {
+    color: white;
+}
+
+.navega_sunka a i {
+    font-size: 23px;
+    margin-right: 16px;
+}
+
+.navega_sunka a span {
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    white-space: nowrap;
+    z-index: 9999;
+}
+
+.table {
+    position: absolute;
+    top: 80px;
+    left: 0px;
+}
+
+
+
+.button-container-add {
+    top: 20px;
+    right: 150px;
+    background: #007EC4;
+    border: 2px solid white;
+    border-radius: 30px;
+    position: fixed;
+    transition: all .5s ease;
+    z-index: 9999;
+}
+
+
+    .button-container-add:hover {
+        background: #005CC4;
+    }
+
+
+#check {
+    display: none;
+}
+
+label #amdaven, label #lodesan {
+    position: fixed;
+    cursor: pointer;
+    color: white;
+    border-radius: 5px;
+    border: 1px solid #007EC4;
+    margin: 15px 30px;
+    font-size: 29px;
+    background: #007EC4;
+    height: 45px;
+    width: 45px;
+    text-align: center;
+    left: 0;
+    z-index: 9999;
+    line-height: 45px;
+    top: 0;
+    transition: all .5s ease;
+}
+
+label #lodesan {
+    opacity: 0;
+    visibility: hidden;
+}
+
+#check:checked ~ .navega_sunka {
+    left: 0;
+}
+
+#check:checked ~ label #amdaven {
+    margin-left: 245px;
+    opacity: 0;
+    visibility: hidden;
+}
+.kamaz-logo {
+   left: 0;
+}
+
+
+
+#check:checked ~ label #lodesan {
+    margin-left: 380px;
+    opacity: 1;
+    visibility: visible;
+}
+
+@media(max-width : 860px) {
+    .navega_sunka {
+        height: auto;
+        width: 70px;
+        left: 0;
+        margin: 100px 0;
+    }
+
+    header, #amdaven, #lodesan {
+        display: none;
+    }
+
+    span {
+        position: absolute;
+        margin-left: 23px;
+        opacity: 0;
+        visibility: hidden;
+    }
+
+    .navega_sunka a {
+        height: 60px;
+    }
+
+
+    .navega_sunka a i {
+        margin-left: -10px;
+    }
+
+    a:hover {
+        width: 370px;
+        background: #005CC4;
+    }
+
+
+
+    .navega_sunka a:hover span {
+        opacity: 1;
+        visibility: visible;
+    }
+
+}
+
+
+h2 {
+    margin: 16px;
+}
+
+
+.container {
+    padding: 32px;
+}
+
+.select-box {
+    width: 200px;
+    z-index: 9998;
+}
+
+    .select-box .options-container {
+        background: #007EC4;
+        color: #f5f6fa;
+        z-index: 9998;
+        max-height: 0;
+        width: 100%;
+        opacity: 0;
+        transition: all 0.4s;
+        border-radius: 8px;
+        overflow: hidden;
+        order: 1;
+    }
+
+.selected {
+    top: 15px;
+    width: 300px;
+    height: 50px;
+    background: #007EC4;
+    border: 2px solid white;
+    border-radius: 8px;
+    margin-bottom: 8px;
+    color: #f5f6fa;
+    z-index: 9998;
+    position: fixed;
+    order: 0;
+    overflow: hidden;
+    resize: none;
+}
+
+    .selected::after {
+        content: "";
+        background-image: url('../arrow-down.svg');
+        background-size: contain;
+        background-repeat: no-repeat;
+        position: absolute;
+        height: 100%;
+        width: 32px;
+        right: 10px;
+        top: 5px;
+        transition: all 0.4s;
+    }
+
+.select-box .options-container.active {
+    max-height: 240px;
+    width: 300px;
+    position:fixed;
+    opacity: 1;
+    z-index: 9998;
+    overflow-y: scroll;
+}
+
+    .select-box .options-container.active + .selected::after {
+        transform: rotateX(180deg);
+        top: -6px;
+    }
+
+.select-box .options-container::-webkit-scrollbar {
+    width: 8px;
+    background: #0072C4;
+    border-radius: 0 8px 8px 0;
+}
+
+.select-box .options-container::-webkit-scrollbar-thumb {
+    background: #0044C4;
+    border-radius: 0 8px 8px 0;
+}
+
+.select-box .option,
+.selected {
+    padding: 12px 24px;
+    cursor: pointer;
+}
+
+    .select-box .option:hover {
+        background: #005CC4;
+    }
+
+.select-box label {
+    cursor: pointer;
+}
+
+.select-box .option .radio {
+    display: none;
+}
+
+
+
+
+
+
+
+

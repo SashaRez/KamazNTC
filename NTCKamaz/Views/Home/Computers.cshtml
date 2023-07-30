@@ -1,0 +1,129 @@
+﻿@{
+    @using NTCKamaz.Data.ViewClasses
+    @using System.Reflection;
+    @using System.ComponentModel;
+}
+
+<form id="searchForm" method="get" action="@Url.Action("Computers", "Home")">
+
+    <div class="select-box">
+
+
+        <div class="options-container" id="computer-options-container">
+            @foreach (var propertyInfo in typeof(PCView).GetProperties())
+            {
+                var displayName = propertyInfo.GetCustomAttribute<DisplayNameAttribute>()?.DisplayName ?? propertyInfo.Name;
+
+                <div class="option">
+                    <input type="radio" class="radio" id="@propertyInfo.Name" value="@propertyInfo.Name" />
+                    <label for="@propertyInfo.Name">@displayName</label>
+                </div>
+            }
+        </div>
+
+        <textarea class="selected" name="selectedOption" readonly>
+            Select Parameter
+        </textarea>
+    </div>
+
+    <div class="search_box">
+        <input id="searchInput" class="search-txt" type="text" name="search" placeholder="Type to search">
+        <button class="search-btn" type="submit">
+            <i class="fas fa-search"></i>
+        </button>
+    </div>
+</form>
+
+
+
+<div class="tablePC">
+    <table id="PCView" class="table table-bordered">
+
+            <thead>
+                <tr>
+                    <th><p>ID</p></th>
+                    <th><p>Имя ПК</p></th>
+                    <th><p>Дата выдачи</p></th>
+                    <th><p>Пользователь</p></th>
+                    <th><p>Отдел</p></th>
+                    <th><p>Марка</p></th>
+                    <th><p>SN системного блока</p></th>
+                    <th><p>Характеристика</p></th>
+                    <th><p>Поставщик</p></th>
+                    <th><p>Категория</p></th>
+                    <th><p>ОС</p></th>
+                    <th><p>Инвентарный номер</p></th>
+                    <th><p>Скл №ПК</p></th>
+                    <th><p>Монитор</p></th>
+                    <th><p>SN монитора</p></th>
+                    <th><p>Переферийные устройства</p></th>
+                    <th><p>Кабинет</p></th>
+                    <th><p>МОЛ</p></th>
+                    <th><p>Проект</p></th>
+                    <th><p>Основание</p></th>
+                    <th><p>Примечание</p></th>
+                    <th><p>Редактирование</p></th>
+                    <th><p>Удаление</p></th>
+                </tr>
+
+            </thead>
+
+
+            <tbody>
+
+                @foreach (var pc in Model.PCViews!)
+                {
+                    <tr>
+
+
+                        <td>@pc.ID</td>
+                        <td>@pc.pcName</td>
+                        <td>@pc.dateOfIssue</td>
+                        <td>@pc.userName</td>
+                        <td>@pc.departmentName</td>
+                        <td>@pc.pcMark</td>
+                        <td>@pc.snSystemBlock</td>
+                        <td>@pc.characteristic</td>
+                        <td>@pc.providerName</td>
+                        <td>@pc.category</td>
+                        <td>@pc.OS</td>
+                        <td>@pc.inventoryNumber</td>
+                        <td>@pc.skladNumberPC</td>
+                        <td>@pc.monitorName</td>
+                        <td>@pc.snMonitor</td>
+                        <td>@pc.additionalDevices</td>
+                        <td>@pc.cabinet</td>
+                        <td>@pc.MOL</td>
+                        <td>@pc.projectName</td>
+                        <td>@pc.foundation</td>
+                        <td>@pc.note</td>
+
+
+                    <td>
+                        <a class="btn btn-warning" asp-action="EditPC" asp-route-Id="@pc.ID">
+                            Редактировать
+                        </a>
+                    </td>
+
+
+                    <td>
+                        <form method="post" asp-action="DeletePC" asp-route-id="@pc.ID">
+                            <button type="submit" class="btn btn-danger">Удалить </button>
+                        </form>
+                    </td>
+
+                    </tr>
+                }
+
+            </tbody>
+
+
+        </table>
+
+    <div class="button-container-add">
+        <a class="btn" href="/Home/AddPC">
+            Добавить PC
+        </a>
+    </div>
+
+</div>

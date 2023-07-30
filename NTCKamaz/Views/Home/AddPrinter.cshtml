@@ -1,0 +1,67 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<form method="post" action="/Home/AddPrinter">
+
+    <div class="table-container" style="margin-top: 100px;">
+
+
+        @if (TempData["ErrorMessage"] != null)
+        {
+            <div class="alert alert-danger">
+                @TempData["ErrorMessage"]
+            </div>
+        }
+
+
+
+        <table>
+
+            <tr>
+                <td><p>Марка</p></td>
+                <td> <input type="text" value="" name="printerMark" /> </td>
+            </tr>
+
+
+            <tr>
+                <td><p>Имя хоста</p></td>
+                <td><input type="text" value="" name="hostName" /> </td>
+            </tr>
+
+
+            <tr>
+                <td><p>Серийный номер</p></td>
+                <td><input type="text" value="" name="snNumber" /> </td>
+            </tr>
+
+
+            <tr>
+                <td><p>Инвентарный номер</p></td>
+                <td><input type="text" value="" name="inventoryNumber" /> </td>
+            </tr>
+
+            <tr>
+                <td><p>IP-адрес</p></td>
+                <td><input type="text" value="" name="ipAddress" /> </td>
+            </tr>
+
+
+            <tr>
+                <td><p>Кабинет</p></td>
+                <td><input type="text" value="" name="cabinet" /> </td>
+            </tr>
+
+
+            <tr>
+                <td><input type="submit" value="Отправить" /> </td>
+                <td></td>
+            </tr>
+
+
+        </table>
+
+
+    </div>
+</form>
+

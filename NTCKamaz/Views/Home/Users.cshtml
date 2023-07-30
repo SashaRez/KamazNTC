@@ -1,0 +1,94 @@
+﻿@{
+    @using NTCKamaz.Data.ViewClasses
+    @using System.Reflection;
+    @using System.ComponentModel;
+}
+
+<form id="searchForm" method="get" action="@Url.Action("Users", "Home")">
+
+    <div class="select-box">
+
+
+        <div class="options-container" id="user-options-container">
+            @foreach (var propertyInfo in typeof(UserView).GetProperties())
+            {
+                var displayName = propertyInfo.GetCustomAttribute<DisplayNameAttribute>()?.DisplayName ?? propertyInfo.Name;
+
+                <div class="option">
+                    <input type="radio" class="radio" id="@propertyInfo.Name" value="@propertyInfo.Name" />
+                    <label for="@propertyInfo.Name">@displayName</label>
+                </div>
+            }
+        </div>
+
+        <textarea class="selected" name="selectedOption" readonly>
+            Select Parameter
+        </textarea>
+    </div>
+
+    <div class="search_box">
+        <input id="searchInput" class="search-txt" type="text" name="search" placeholder="Type to search">
+        <button class="search-btn" type="submit">
+            <i class="fas fa-search"></i>
+        </button>
+    </div>
+</form>
+
+
+
+
+<div class="tableUsers">
+<table id="UserView" class="table table-bordered">
+
+    <thead>
+        <tr>
+            <th><p>ID</p></th>
+            <th><p>Табельный номер</p></th>
+            <th><p>ФИО</p></th>
+            <th><p>Кабинет</p></th>
+            <th><p>Должность</p></th>
+            <th><p>Отдел(сокр.)</p></th>
+            <th><p>Учётная запись</p></th>
+            <th><p>ID ПК</p></th>
+                <th><p>Редактирование</p></th>
+                <th><p>Удаление</p></th>
+        </tr>
+    </thead>
+
+
+        @foreach (var user in Model.UserViews!)
+        {
+            <tr>
+                <td>@user.ID</td>
+                <td>@user.TableNumber</td>
+                <td>@user.UserName</td>
+                <td>@user.Cabinet</td>
+                <td>@user.Position</td>
+                <td>@user.Department</td>
+                <td>@user.Account</td>
+                <td>@user.pcID</td>
+
+
+
+
+                <td>
+                    <a class="btn btn-warning" asp-action="EditUser" asp-route-Id="@user.ID">
+                        Редактировать
+                    </a>
+                </td>
+
+
+                <td>
+                    <form method="post" asp-action="DeleteUser" asp-route-id="@user.ID">
+                        <button type="submit" class="btn btn-danger">Удалить </button>
+                    </form>
+                </td>
+
+
+            </tr>
+        }
+
+
+</table>
+
+</div>

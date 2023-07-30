@@ -1,0 +1,109 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KamazPCManager</title>
+    <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/WebApplication2.styles.css" asp-append-version="true" />
+</head>
+<body>
+
+    <div class="tool_bar">
+        <b href="#"><img src="~/kamaz.svg" alt="deleted" right: 0px; width="80px" height="80px"></b>
+    </div>
+
+
+    <input type="checkbox" id="check">
+
+    <label for="check">
+        <i class="fas fa-bars" id="amdaven"></i>
+        <i class="fas fa-times" id="lodesan"></i>
+    </label>
+
+
+
+    <div class="navega_sunka">
+
+        <header id="headerText">
+            База учёта ВТиОТ
+        </header>
+
+        <a href="@Url.Action("Main", "Home")">
+            <i class="fas fa-home"></i>
+            <span>Главная</span>
+        </a>
+
+
+        <a href="@Url.Action("Computers", "Home")">
+            <i class="fas fa-laptop" aria-hidden="true"></i>
+            <span>Все компьютеры</span>
+        </a>
+
+
+        <a href="@Url.Action("Monitors", "Home")">
+            <i class="fas fa-desktop" aria-hidden="true"></i>
+            <span>Мониторы</span>
+        </a>
+
+        <a href="@Url.Action("OperationSystems", "Home")">
+            <i class="fas fa-compact-disc" aria-hidden="true"></i>
+            <span>Операционные системы</span>
+        </a>
+
+        <a href="@Url.Action("Assemblies", "Home")">
+            <i class="fas fa-tools" aria-hidden="true"></i>
+            <span>Сборки</span>
+        </a>
+
+        <a href="@Url.Action("Departments", "Home")">
+            <i class="fas fa-building" aria-hidden="true"></i>
+            <span>Отделы</span>
+        </a>
+
+        <a href="@Url.Action("Users", "Home")">
+            <i class="fas fa-users" aria-hidden="true"></i>
+            <span>Пользователи</span>
+        </a>
+
+        <a href="@Url.Action("MOLS", "Home")">
+            <i class="fas fa-user" aria-hidden="true"></i>
+            <span>МОЛ</span>
+        </a>
+
+        <a href="@Url.Action("InventoryNumbers", "Home")">
+            <i class="fa fa-id-card" aria-hidden="true"></i>
+            <span>Инвентарные номера</span>
+        </a>
+
+        <a href="@Url.Action("AdditionalDevices", "Home")">
+            <i class="fa fa-keyboard" aria-hidden="true"></i>
+            <span>Переферийные устройства</span>
+        </a>
+
+        <a href="@Url.Action("Printers", "Home")">
+            <i class="fa fa-print" aria-hidden="true"></i>
+            <span>Принтеры</span>
+        </a>
+
+    </div>
+
+
+    <div class="container">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>
+
+
+    

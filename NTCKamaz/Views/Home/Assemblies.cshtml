@@ -1,0 +1,95 @@
+﻿@{
+    @using NTCKamaz.Data.ViewClasses
+    @using System.Reflection;
+    @using System.ComponentModel;
+}
+
+<form id="searchForm" method="get" action="@Url.Action("Assemblies", "Home")">
+
+    <div class="select-box">
+
+
+        <div class="options-container" id="assembly-options-container">
+            @foreach (var propertyInfo in typeof(AssemblyView).GetProperties())
+            {
+                var displayName = propertyInfo.GetCustomAttribute<DisplayNameAttribute>()?.DisplayName ?? propertyInfo.Name;
+
+                <div class="option">
+                    <input type="radio" class="radio" id="@propertyInfo.Name" value="@propertyInfo.Name" />
+                    <label for="@propertyInfo.Name">@displayName</label>
+                </div>
+            }
+        </div>
+
+        <textarea class="selected" name="selectedOption" readonly>
+            Select Parameter
+        </textarea>
+    </div>
+
+    <div class="search_box">
+        <input id="searchInput" class="search-txt" type="text" name="search" placeholder="Type to search">
+        <button class="search-btn" type="submit">
+            <i class="fas fa-search"></i>
+        </button>
+    </div>
+</form>
+
+
+
+<div class="tableAssemblies">
+
+
+    <div class="table-container">
+        <table id="AssemblieView" class="table table-bordered">
+
+            <thead>
+                <tr>
+                    <th><p>ID</p></th>
+                    <th><p>Процессор</p></th>
+                    <th><p>Материнская плата</p></th>
+                    <th><p>ОЗУ</p></th>
+                    <th><p>Видеокарта</p></th>
+                    <th><p>HDD</p></th>
+                    <th><p>SSD</p></th>
+                    <th><p>Блок питания</p></th>
+                    <th><p>ID ПК</p></th>
+                    <th><p>Удаление</p></th>
+
+                </tr>
+            </thead>
+
+
+            <tbody>
+                @foreach (var assembly in Model.AssemblyViews!)
+                {
+                    <tr>
+                        <td>@assembly.ID</td>
+                        <td>@assembly.Processor</td>
+                        <td>@assembly.Motherboard</td>
+                        <td>@assembly.RAM</td>
+                        <td>@assembly.Videocard</td>
+                        <td>@assembly.HDD</td>
+                        <td>@assembly.SSD</td>
+                        <td>@assembly.BP</td>
+                        <td>@assembly.pcID</td>
+
+
+
+
+                        <td>
+                            <form method="post" asp-action="DeleteAssembly" asp-route-id="@assembly.ID">
+                                <button type="submit" class="btn btn-danger">Удалить </button>
+                            </form>
+                        </td>
+
+
+                    </tr>
+                }
+            </tbody>
+
+
+
+        </table>
+    </div>
+
+</div>

@@ -1,0 +1,107 @@
+﻿@{
+    @using NTCKamaz.Data.ViewClasses
+    @using System.Reflection;
+    @using System.ComponentModel;
+}
+
+<form id="searchForm" method="get" action="@Url.Action("Printers", "Home")">
+
+    <div class="select-box">
+
+
+        <div class="options-container" id="printer-options-container">
+            @foreach (var propertyInfo in typeof(PrinterView).GetProperties())
+            {
+                var displayName = propertyInfo.GetCustomAttribute<DisplayNameAttribute>()?.DisplayName ?? propertyInfo.Name;
+
+                <div class="option">
+                    <input type="radio" class="radio" id="@propertyInfo.Name" value="@propertyInfo.Name" />
+                    <label for="@propertyInfo.Name">@displayName</label>
+                </div>
+            }
+        </div>
+
+        <textarea class="selected" name="selectedOption" readonly>
+            Select Parameter
+        </textarea>
+    </div>
+
+    <div class="search_box">
+        <input id="searchInput" class="search-txt" type="text" name="search" placeholder="Type to search">
+        <button class="search-btn" type="submit">
+            <i class="fas fa-search"></i>
+        </button>
+    </div>
+</form>
+
+
+
+
+
+
+<div class="tablePrinters">
+    <table id="PrinterView" class="table table-bordered">
+
+        <thead>
+            <tr>
+                <th><p>ID</p></th>
+                <th><p>Марка</p></th>
+                <th><p>Имя хоста</p></th>
+                <th><p>Серийный номер</p></th>
+                <th><p>Инвентарный номер</p></th>
+                <th><p>IP-адрес</p></th>
+                <th><p>Кабинет</p></th>
+                <th><p>Редактирование</p></th>
+                <th><p>Удаление</p></th>
+            </tr>
+        </thead>
+
+
+
+        <tbody>
+
+            @foreach (var printer in Model.PrinterViews!)
+            {
+                <tr>
+                    <td>@printer.ID</td>
+                    <td>@printer.MarkPrinter</td>
+                    <td>@printer.HostName</td>
+                    <td>@printer.snNumberPrinter</td>
+                    <td>@printer.InventoryNumberPrinter</td>
+                    <td>@printer.IPAddressPrinter</td>
+                    <td>@printer.Cabinet</td>
+
+
+
+
+                    <td>
+                        <a class="btn btn-warning" asp-action="EditPrinter" asp-route-Id="@printer.ID">
+                            Редактировать
+                        </a>
+                    </td>
+
+
+                    <td>
+                        <form method="post" asp-action="DeletePrinter" asp-route-id="@printer.ID">
+                            <button type="submit" class="btn btn-danger">Удалить </button>
+                        </form>
+                    </td>
+
+
+                </tr>
+            }
+
+        </tbody>
+
+
+
+    </table>
+
+    <div class="button-container-add">
+        <a class="btn" href="/Home/AddPrinter">
+            Добавить принтер
+        </a>
+    </div>
+
+
+</div>

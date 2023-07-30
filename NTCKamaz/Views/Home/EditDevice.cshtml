@@ -1,0 +1,66 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+@model NTCKamaz.Models.Model
+
+
+<form method="post" action="">
+
+    <div class="table-container" style="margin-top: 100px;">
+
+
+        @if (TempData["ErrorMessage"] != null)
+        {
+            <div class="alert alert-danger">
+                @TempData["ErrorMessage"]
+            </div>
+        }
+
+        @foreach (var device in Model.AdditionalDevicesViews!)
+        {
+            <table>
+
+                <tr>
+                    <td><p>Клавиатура и мышь</p></td>
+                    <td> <input type="text" value="@device.KeyboardAndMouse" name="keyboardName" /> </td>
+                </tr>
+
+
+                <tr>
+                    <td><p>Веб-камера</p></td>
+                    <td> <input type="text" value="@device.Webcam" name="webcamName" /> </td>
+                </tr>
+
+                <tr>
+                    <td><p>Наушник</p></td>
+                    <td> <input type="text" value="@device.Headphone" name="headphoneName" /> </td>
+                </tr>
+
+
+                <tr>
+                    <td><p>Сетевой фильтр</p></td>
+                    <td> <input type="text" value="@device.NetworkFilter" name="netfilterName" /> </td>
+                </tr>
+
+
+                <tr>
+                    <td><p>ID ПК</p></td>
+                    <td> <input type="text" value="@device.pcID" name="pcID" /> </td>
+                </tr>
+
+                <tr>
+                    <td><input type="submit" value="Отправить" /> </td>
+                    <td></td>
+                </tr>
+
+
+            </table>
+        }
+
+
+
+
+    </div>
+</form>
+

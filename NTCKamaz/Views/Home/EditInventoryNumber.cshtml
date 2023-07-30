@@ -1,0 +1,57 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+@model NTCKamaz.Models.Model
+
+
+<form method="post" action="">
+
+    <div class="table-container" style="margin-top: 100px;">
+
+
+        @if (TempData["ErrorMessage"] != null)
+        {
+            <div class="alert alert-danger">
+                @TempData["ErrorMessage"]
+            </div>
+        }
+
+        @foreach (var inventory in Model.InventoryNumberViews!)
+        {
+            <table>
+
+                <tr>
+                    <td><p>Инвентарный номер</p></td>
+                    <td> <input type="text" value="@inventory.InventoryNumbers" name="inventoryNumber" /> </td>
+                </tr>
+
+
+                <tr>
+                    <td><p>ID ПК</p></td>
+                    <td><input type="text" value="@inventory.pcID" name="pcID" /> </td>
+                </tr>
+
+
+                <tr>
+                    <td><p>ID монитора</p></td>
+                    <td><input type="text" value="@inventory.monitorID" name="monitorID" /> </td>
+                </tr>
+
+
+                <tr>
+                    <td><input type="submit" value="Отправить" /> </td>
+                    <td></td>
+                </tr>
+
+
+            </table>
+        }
+
+
+
+
+    </div>
+</form>
+
+

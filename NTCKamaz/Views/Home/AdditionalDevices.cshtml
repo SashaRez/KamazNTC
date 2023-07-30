@@ -1,0 +1,90 @@
+﻿@{
+    @using NTCKamaz.Data.ViewClasses
+    @using System.Reflection;
+    @using System.ComponentModel;
+}
+
+<form id="searchForm" method="get" action="@Url.Action("AdditionalDevices", "Home")">
+
+    <div class="select-box">
+
+
+        <div class="options-container" id="devices-options-container">
+            @foreach (var propertyInfo in typeof(AdditionalDevicesView).GetProperties())
+            {
+                var displayName = propertyInfo.GetCustomAttribute<DisplayNameAttribute>()?.DisplayName ?? propertyInfo.Name;
+
+                <div class="option">
+                    <input type="radio" class="radio" id="@propertyInfo.Name" value="@propertyInfo.Name" />
+                    <label for="@propertyInfo.Name">@displayName</label>
+                </div>
+            }
+        </div>
+
+        <textarea class="selected" name="selectedOption" readonly>
+            Select Parameter
+        </textarea>
+    </div>
+
+    <div class="search_box">
+        <input id="searchInput" class="search-txt" type="text" name="search" placeholder="Type to search">
+        <button class="search-btn" type="submit">
+            <i class="fas fa-search"></i>
+        </button>
+    </div>
+</form>
+
+
+
+<div class="AdditionalDevices">
+
+
+    <div class="table-container">
+        <table id="AdditionalDevicesView" class="table table-bordered">
+
+            <thead>
+                <tr>
+                    <th><p>ID</p></th>
+                    <th><p>Клавиатура+Мышь</p></th>
+                    <th><p>Веб-камера</p></th>
+                    <th><p>Наушник</p></th>
+                    <th><p>Сетевой фильтр</p></th>
+                    <th><p>ID ПК</p></th>
+                    <th><p>Удаление</p></th>
+                </tr>
+            </thead>
+
+
+
+            <tbody>
+
+                @foreach (var device in Model.AdditionalDevicesViews!)
+                {
+                    <tr>
+                        <td>@device.ID</td>
+                        <td>@device.KeyboardAndMouse</td>
+                        <td>@device.Webcam</td>
+                        <td>@device.Headphone</td>
+                        <td>@device.NetworkFilter</td>
+                        <td>@device.pcID</td>
+
+
+
+                        <td>
+                            <form method="post" asp-action="DeleteDevice" asp-route-id="@device.ID">
+                                <button type="submit" class="btn btn-danger">Удалить </button>
+                            </form>
+                        </td>
+
+
+                    </tr>
+                }
+
+            </tbody>
+
+
+        </table>
+    </div>
+
+
+</div>

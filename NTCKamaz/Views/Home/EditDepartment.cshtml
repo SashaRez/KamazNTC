@@ -1,0 +1,33 @@
+﻿@model NTCKamaz.Models.Model
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+
+<form method="post" action="">
+    <div class="table-container" style="margin-top: 100px;">
+    <table>
+
+        @foreach (var department in Model.DepartmentViews!)
+        {
+
+            <tr>
+                <td><p>Сокращённое наименование</p></td>
+                <td><input type="text" value="@department.shortName" name="shortName" /> </td>
+            </tr>
+
+            <tr>
+                <td><p>Полное наименование</p></td>
+                <td><input type="text" value="@department.fullName" name="fullName" /> </td>
+            </tr>
+          
+            <tr>
+                <td><input type="submit" value="Отправить" /> </td>
+                <td></td>
+            </tr>
+        }
+
+    </table>
+    </div>
+</form>

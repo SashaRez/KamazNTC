@@ -1,0 +1,89 @@
+﻿@{
+    @using NTCKamaz.Data.ViewClasses
+    @using System.Reflection;
+    @using System.ComponentModel;
+}
+
+<form id="searchForm" method="get" action="@Url.Action("MOLS", "Home")">
+
+    <div class="select-box">
+
+
+        <div class="options-container" id="mol-options-container">
+            @foreach (var propertyInfo in typeof(MOLView).GetProperties())
+            {
+                var displayName = propertyInfo.GetCustomAttribute<DisplayNameAttribute>()?.DisplayName ?? propertyInfo.Name;
+
+                <div class="option">
+                    <input type="radio" class="radio" id="@propertyInfo.Name" value="@propertyInfo.Name" />
+                    <label for="@propertyInfo.Name">@displayName</label>
+                </div>
+            }
+        </div>
+
+        <textarea class="selected" name="selectedOption" readonly>
+            Select Parameter
+        </textarea>
+    </div>
+
+    <div class="search_box">
+        <input id="searchInput" class="search-txt" type="text" name="search" placeholder="Type to search">
+        <button class="search-btn" type="submit">
+            <i class="fas fa-search"></i>
+        </button>
+    </div>
+</form>
+
+
+
+
+
+<div class="tableMols">
+
+
+    <div class="table-container">
+        <table id="MolView" class="table table-bordered">
+
+            <thead>
+                <tr>
+                    <th><p>ID</p></th>
+                    <th><p>ФИО</p></th>
+                    <th><p>ID ПК</p></th>
+                    <th><p>Удаление</p></th>
+                </tr>
+            </thead>
+
+
+            <tbody>
+                @foreach (var mol in Model.MOLViews!)
+                {
+                    <tr>
+                        <td>@mol.ID</td>
+                        <td>@mol.UserName</td>
+                        <td>@mol.pcID</td>
+
+
+
+                        <td>
+                            <form method="post" asp-action="DeleteMol" asp-route-id="@mol.ID">
+                                <button type="submit" class="btn btn-danger">Удалить </button>
+                            </form>
+                        </td>
+
+
+                    </tr>
+                }
+            </tbody>
+
+
+        </table>
+
+
+
+
+
+
+    </div>
+
+
+</div>

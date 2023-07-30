@@ -1,0 +1,89 @@
+﻿@{
+    @using NTCKamaz.Data.ViewClasses
+    @using System.Reflection;
+    @using System.ComponentModel;
+}
+
+<form id="searchForm" method="get" action="@Url.Action("Departments", "Home")">
+
+    <div class="select-box">
+
+
+        <div class="options-container" id="department-options-container">
+            @foreach (var propertyInfo in typeof(DepartmentView).GetProperties())
+            {
+                var displayName = propertyInfo.GetCustomAttribute<DisplayNameAttribute>()?.DisplayName ?? propertyInfo.Name;
+
+                <div class="option">
+                    <input type="radio" class="radio" id="@propertyInfo.Name" value="@propertyInfo.Name" />
+                    <label for="@propertyInfo.Name">@displayName</label>
+                </div>
+            }
+        </div>
+
+        <textarea class="selected" name="selectedOption" readonly>
+            Select Parameter
+        </textarea>
+    </div>
+
+    <div class="search_box">
+        <input id="searchInput" class="search-txt" type="text" name="search" placeholder="Type to search">
+        <button class="search-btn" type="submit">
+            <i class="fas fa-search"></i>
+        </button>
+    </div>
+</form>
+
+
+
+<div class="tableDepartments">
+<table id="DepartmentView" class="table table-bordered">
+
+
+            <thead>
+                <tr>
+
+                <th><p>ID</p></th>
+                <th><p>Сокращённое наименование</p></th>
+                <th><p>Полное наименование</p></th>
+                <th><p>Редактирование</p></th>
+                <th><p>Удаление</p></th>
+                </tr>
+            </thead>
+
+
+            <tbody>
+            @foreach (var department in Model.DepartmentViews!)
+            {
+                <tr>
+                    <td>@department.ID</td>
+                    <td>@department.shortName</td>
+                    <td>@department.fullName</td>
+
+
+
+                    <td>
+                        <a class="btn btn-warning" asp-action="EditDepartment" asp-route-Id="@department.ID">
+                            Редактировать
+                        </a>
+                    </td>
+
+
+                    <td>
+                        <form method="post" asp-action="DeleteDepartment" asp-route-id="@department.ID">
+                            <button type="submit" class="btn btn-danger">Удалить </button>
+                        </form>
+                    </td>
+
+                </tr>
+
+
+            }
+            </tbody>
+
+
+
+        </table>
+
+
+</div>

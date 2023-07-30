@@ -1,0 +1,118 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+@model NTCKamaz.Models.Model
+
+
+<div class="select-box">
+
+
+
+    <div class="options-container">
+        <div class="option">
+            <input type="radio"
+                   class="radio"
+                   id="automobiles"
+                   name="category" />
+            <label for="automobiles">Automobiles</label>
+        </div>
+
+        <div class="option">
+            <input type="radio" class="radio" id="film" name="category" />
+            <label for="film">Film & Animation</label>
+        </div>
+
+        <div class="option">
+            <input type="radio" class="radio" id="science" name="category" />
+            <label for="science">Science & Technology</label>
+        </div>
+
+        <div class="option">
+            <input type="radio" class="radio" id="art" name="category" />
+            <label for="art">Art</label>
+        </div>
+
+        <div class="option">
+            <input type="radio" class="radio" id="music" name="category" />
+            <label for="music">Music</label>
+        </div>
+
+        <div class="option">
+            <input type="radio" class="radio" id="travel" name="category" />
+            <label for="travel">Travel & Events</label>
+        </div>
+
+        <div class="option">
+            <input type="radio" class="radio" id="sports" name="category" />
+            <label for="sports">Sports</label>
+        </div>
+
+        <div class="option">
+            <input type="radio" class="radio" id="news" name="category" />
+            <label for="news">News & Politics</label>
+        </div>
+
+        <div class="option">
+            <input type="radio" class="radio" id="tutorials" name="category" />
+            <label for="tutorials">Tutorials</label>
+        </div>
+    </div>
+
+    <div class="selected">
+        Select Parameter
+    </div>
+</div>
+
+
+
+
+<div class="tableComponents">
+    <table id="ComponentView" class="table table-bordered">
+
+        <thead>
+            <tr>
+                <th><p>ID</p></th>
+                <th><p>Процессор</p></th>
+                <th><p>Материнская плата</p></th>
+                <th><p>ОЗУ</p></th>
+                <th><p>Видеокарта</p></th>
+                <th><p>HDD</p></th>
+                <th><p>SSD</p></th>
+                <th><p>Блок питания</p></th>
+            </tr>
+        </thead>
+
+
+
+        <tbody>
+
+            @foreach (var component in Model.ComponentViews!)
+            {
+                <tr>
+                    <td>@component.ID</td>
+                    <td>@component.Processor</td>
+                    <td>@component.Motherboard</td>
+                    <td>@component.RAM</td>
+                    <td>@component.Videocard</td>
+                    <td>@component.HDD</td>
+                    <td>@component.SSD</td>
+                    <td>@component.BP</td>
+
+                </tr>
+            }
+
+        </tbody>
+
+
+
+    </table>
+
+    <div class="button-container-add">
+        <b class="btn" href="/Home/AddComponent">
+            Добавить комплектующее
+        </b>
+    </div>
+</div>

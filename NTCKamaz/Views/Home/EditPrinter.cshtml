@@ -1,0 +1,73 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+@model NTCKamaz.Models.Model
+
+
+<form method="post" action="">
+
+    <div class="table-container" style="margin-top: 100px;">
+
+
+        @if (TempData["ErrorMessage"] != null)
+        {
+            <div class="alert alert-danger">
+                @TempData["ErrorMessage"]
+            </div>
+        }
+
+        @foreach (var printer in Model.PrinterViews!)
+        {
+            <table>
+
+                <tr>
+                    <td><p>Марка</p></td>
+                    <td> <input type="text" value="@printer.MarkPrinter" name="printerMark" /> </td>
+                </tr>
+
+
+                <tr>
+                    <td><p>Имя хоста</p></td>
+                    <td><input type="text" value="@printer.HostName" name="hostName" /> </td>
+                </tr>
+
+
+                <tr>
+                    <td><p>Серийный номер</p></td>
+                    <td><input type="text" value="@printer.snNumberPrinter" name="snNumber" /> </td>
+                </tr>
+
+
+                <tr>
+                    <td><p>Инвентарный номер</p></td>
+                    <td><input type="text" value="@printer.InventoryNumberPrinter" name="inventoryNumber" /> </td>
+                </tr>
+
+                <tr>
+                    <td><p>IP-адрес</p></td>
+                    <td><input type="text" value="@printer.IPAddressPrinter" name="ipAddress" /> </td>
+                </tr>
+
+
+                <tr>
+                    <td><p>Кабинет</p></td>
+                    <td><input type="text" value="@printer.Cabinet" name="cabinet" /> </td>
+                </tr>
+
+
+                <tr>
+                    <td><input type="submit" value="Отправить" /> </td>
+                    <td></td>
+                </tr>
+
+
+            </table>
+        }
+
+       
+
+
+    </div>
+</form>
+

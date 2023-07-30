@@ -1,0 +1,38 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<form method="post" action="/Home/AddDepartment">
+
+    <div class="table-container" style="margin-top: 100px;">
+
+        <table>
+
+            <tr>
+                <td><p>Сокращённое наименование</p></td>
+                <td> <input type="text" value="" name="shortName" /> </td>
+            </tr>
+
+
+            <tr>
+                <td><p>Полное наименование</p></td>
+                <td><input type="text" value="" name="fullName" /> </td>
+            </tr>
+
+
+            <tr>
+                <td><p>Начальник</p></td>
+                <td><input type="text" value="" name="chiefsName" /> </td>
+            </tr>
+
+
+            <tr>
+                <td><input type="submit" value="Отправить" /> </td>
+                <td></td>
+            </tr>
+
+
+        </table>
+    </div>
+</form>
+
